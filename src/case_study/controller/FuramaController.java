@@ -37,9 +37,29 @@ public class FuramaController {
                     break;
                 case 4:
                     displayBookingMenu();
-
+                    break;
+                case 5:
+                    displayPromotionMenu();
+                    break;
+                case 6:
+                    System.exit(0);
             }
         }
+    }
+    public static  void displayEmployeeMenu(){
+
+    }
+    public static  void displayCustomerMenu(){
+
+    }
+    public static  void displayFacilityMenu(){
+
+    }
+    public static  void displayBookingMenu(){
+
+    }
+    public static  void displayPromotionMenu(){
+
     }
 }
 
