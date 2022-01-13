@@ -1,6 +1,7 @@
 package case_study.service.Impl;
 
 import case_study.models.Customer;
+import case_study.models.Person;
 import case_study.service.CustomerService;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class CustomerServiceImpl implements CustomerService {
         String typeOfGuest = scanner.nextLine();
         System.out.println("nhap dia chi");
         String address = scanner.nextLine();
-        Customer customer=new Customer(id,  name,  dayOfBirth,  gender,  idCard,  numberPhone,  gmail, typeOfGuest,address);
+        Customer customer = new Customer(id, name, dayOfBirth, gender, idCard, numberPhone, gmail, typeOfGuest, address);
         customerList.add(customer);
 
 
@@ -63,6 +64,76 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void edit() {
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input your id");
+        int fixid = scanner.nextInt();
+        boolean check = false;
+        for (Person customer : customerList) {
+            System.out.println(customer.getId());
+            if (customer.getId() == fixid) {
+                check = true;
+                System.out.println("Ban muon sua cai gi");
+                System.out.println("2. name");
+                System.out.println("3. dayOfBirth");
+                System.out.println("4. gender");
+                System.out.println("5. idCard");
+                System.out.println("6. numberPhone");
+                System.out.println("7. gmail");
+                System.out.println("8. typeOfGuest");
+                System.out.println("9. address");
+                int choice = scanner.nextInt();
+                scanner.skip("\\R");
+                switch (choice) {
+                    case 2: {
+                        System.out.println("sua ten");
+                        String fixName = scanner.nextLine();
+                        customer.setName(fixName);
+                        break;
+                    }
+                    case 3: {
+                        System.out.println("sua ngay sinh");
+                        String fixDayOfBirth = scanner.nextLine();
+                        customer.setDayOfBirth(fixDayOfBirth);
+                        break;
+                    }
+                    case 4: {
+                        System.out.println("sua gioi tinh");
+                        String fixGender = scanner.nextLine();
+                        customer.setGender(fixGender);
+                        break;
+                    }
+                    case 5: {
+                        System.out.println("sua cmnd");
+                        int fixIdCard = scanner.nextInt();
+                        customer.setIdCard(fixIdCard);
+                        break;
+                    }
+                    case 6: {
+                        System.out.println("sua sdt");
+                        int fixNumberPhone = scanner.nextInt();
+                        customer.setNumberPhone(fixNumberPhone);
+                        break;
+                    }
+                    case 7: {
+                        System.out.println("sua email");
+                        String fixMail = scanner.nextLine();
+                        customer.setGmail(fixMail);
+                        break;
+                    }
+                    case 8: {
+                        System.out.println("sua loai khach");
+                        String fixtypeOfGuest = scanner.nextLine();
+                        ( (Customer)customer).setTypeOfGuest(fixtypeOfGuest);
+                        break;
+                    }
+                    case 9: {
+                        System.out.println("sua dia");
+                        String fixaddress = scanner.nextLine();
+                        ((Customer)customer).setAddress(fixaddress);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
