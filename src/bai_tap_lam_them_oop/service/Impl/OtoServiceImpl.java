@@ -1,6 +1,8 @@
 package bai_tap_lam_them_oop.service.Impl;
 
+import bai_tap_lam_them_oop.controller.QuanLyPhuongTien;
 import bai_tap_lam_them_oop.models.Oto;
+import bai_tap_lam_them_oop.models.PhuongTienGiaoThong;
 import bai_tap_lam_them_oop.service.OtoService;
 
 import java.util.ArrayList;
@@ -33,16 +35,37 @@ public class OtoServiceImpl implements OtoService {
 
     @Override
     public void hienThiOto() {
-        for(Oto oto:otoList){
+        for (Oto oto : otoList) {
             System.out.println(oto);
         }
-
     }
 
     @Override
     public void xoaOto() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Nhap bien so xe muon xoa");
-        String bienKiemSoat= scanner.nextLine();
+        String xoaBienKiemSoat = scanner.nextLine();
+        boolean check = false;
+        for (int i = 0; i < otoList.size(); i++) {
+            System.out.println(otoList.get(i).getBienKiemSoat());
+            if (otoList.get(i).getBienKiemSoat().equals(xoaBienKiemSoat)) {
+                check = true;
+                System.out.println("Ban chac chan muon xoa");
+                System.out.println("1. Yes");
+                System.out.println("2. No");
+                int choice = Integer.parseInt(scanner.nextLine());
 
+                switch (choice) {
+                    case 1:
+                        otoList.remove(i);
+                        System.out.println("Da xoa thanh cong");
+                        break;
+                    case 2:
+                        QuanLyPhuongTien.hienThiMeNuChinh();
+                        break;
+
+                }
+            }
+        }
     }
 }

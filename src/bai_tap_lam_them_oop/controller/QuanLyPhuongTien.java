@@ -20,7 +20,7 @@ public class QuanLyPhuongTien {
         while (check) {
             System.out.println("Menu Chinh");
             System.out.println("1. Thêm mới phương tiện.");
-            System.out.println("2. Hiện thị phương tiện.");
+            System.out.println("2. Hiển thị phương tiện.");
             System.out.println("3. Xóa phương tiện.");
             System.out.println("4. Thoát.");
             Scanner scanner = new Scanner(System.in);
@@ -50,31 +50,33 @@ public class QuanLyPhuongTien {
         OtoService otoService = new OtoServiceImpl();
         XeTaiService xeTaiService = new XeTaiServiceImpl();
         XeMayService xeMayService = new XeMayServiceImpl();
-        System.out.println("Ban muon them moi phuong tien nao");
-        System.out.println("1. Oto");
-        System.out.println("2. Xe tai");
-        System.out.println("3. Xe may");
-        Scanner scanner = new Scanner(System.in);
-        int choice = 0;
-        try {
-            choice = Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Ban nhap sai roi, hay nhap lai");
-        }
-        switch (choice) {
-            case 1:
-                otoService.themMoiOto();
-                break;
-            case 2:
-                xeTaiService.themMoiXeTai();
-                break;
-            case 3:
-                xeMayService.themMoiXeMay();
-                break;
+
+            System.out.println("Ban muon them moi phuong tien nao");
+            System.out.println("1. Oto");
+            System.out.println("2. Xe tai");
+            System.out.println("3. Xe may");
+            Scanner scanner = new Scanner(System.in);
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Ban nhap sai roi, hay nhap lai");
+            }
+            switch (choice) {
+                case 1:
+                    otoService.themMoiOto();
+                    break;
+                case 2:
+                    xeTaiService.themMoiXeTai();
+                    break;
+                case 3:
+                    xeMayService.themMoiXeMay();
+                    break;
+
+            }
 
         }
 
-    }
 
     public static void hienThiPhuongTien() {
         int choice = 0;
@@ -87,6 +89,7 @@ public class QuanLyPhuongTien {
             System.out.println("1. Oto");
             System.out.println("2. Xe tai");
             System.out.println("3. Xe may");
+            System.out.println("4. Quay lai menu");
             Scanner scanner = new Scanner(System.in);
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -103,15 +106,19 @@ public class QuanLyPhuongTien {
                 case 3:
                     xeMayService.hienThiXeMay();
                     break;
+                case 4:
+                    hienThiMeNuChinh();
+                    break;
+
             }
 
         }
     }
 
     public static void xoaPhuongTien() {
-        OtoService otoService=new OtoServiceImpl();
-        XeTaiService xeTaiService=new XeTaiServiceImpl();
-        XeMayService xeMayService=new XeMayServiceImpl();
+        OtoService otoService = new OtoServiceImpl();
+        XeTaiService xeTaiService = new XeTaiServiceImpl();
+        XeMayService xeMayService = new XeMayServiceImpl();
         int choice = 0;
         boolean check = true;
         while (check) {
@@ -119,13 +126,14 @@ public class QuanLyPhuongTien {
             System.out.println("1. Oto");
             System.out.println("2. Xe tai");
             System.out.println("3. Xe may");
+            System.out.println("4. Quay lai menu");
             Scanner scanner = new Scanner(System.in);
             try {
                 choice = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Ban nhap sai roi, hay nhap lai");
             }
-            switch (choice){
+            switch (choice) {
                 case 1:
                     otoService.xoaOto();
                     break;
@@ -134,6 +142,9 @@ public class QuanLyPhuongTien {
                     break;
                 case 3:
                     xeMayService.xoaXeMay();
+                    break;
+                case 4:
+                    hienThiMeNuChinh();
                     break;
             }
         }
